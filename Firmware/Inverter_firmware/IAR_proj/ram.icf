@@ -1,0 +1,88 @@
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x1fff0000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_ROM_start__   = 0x1fff0000;
+define symbol __ICFEDIT_region_ROM_end__     = 0x1fffffff;
+define symbol __ICFEDIT_region_RAM_start__   = 0x20000000;
+define symbol __ICFEDIT_region_RAM_end__     = 0x2000fff0;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__   = 0x400;
+define symbol __ICFEDIT_size_heap__     = 0x200;
+/**** End of ICF editor section. ###ICF###*/
+
+define exported symbol __EXTERNAL_MRAM_ROM_BASE = 0x60000000;
+define exported symbol __EXTERNAL_MRAM_ROM_SIZE = 0x00000000;
+define exported symbol __EXTERNAL_MRAM_RAM_BASE = 0x60000000;
+define exported symbol __EXTERNAL_MRAM_RAM_SIZE = 0x00080000;
+define exported symbol __EXTERNAL_LCD_BASE      = 0x60000000;
+define exported symbol __EXTERNAL_LCD_SIZE      = 0x1FFFF;
+define exported symbol __EXTERNAL_LCD_DC_BASE   = 0x60010000;
+define exported symbol __INTERNAL_FLASH_BASE    = 0x00000000;
+define exported symbol __INTERNAL_FLASH_SIZE    = 0x00100000;
+define exported symbol __INTERNAL_SRAM_BASE     = 0x1FFF0000;
+define exported symbol __INTERNAL_SRAM_SIZE     = 0x00020000;
+define exported symbol __UNCACHED_DATA_START    = 0x1FFF0000;
+define exported symbol __UNCACHED_DATA_SIZE     = 0x00020000;
+define exported symbol __UNCACHED_DATA_END      = 0x2000FFF0;
+define exported symbol __SRAM_POOL              = 0x1FFF0000;
+
+define exported symbol __INTERNAL_FLEXNVM_BASE = 0;
+define exported symbol __INTERNAL_FLEXNVM_SIZE = 0;
+
+
+define exported symbol __VECTOR_TABLE_ROM_START = 0x1fff0000;
+define exported symbol __VECTOR_TABLE_RAM_START = 0x1fff0000;
+
+define exported symbol __DEFAULT_PROCESSOR_NUMBER = 1;
+define exported symbol __DEFAULT_INTERRUPT_STACK_SIZE = 1024;
+
+/* mem_init writes a storeblock_struct at the end of kernel data, max size 32 bytes, so use 0x100 offset */
+define exported symbol __BOOT_STACK_ADDRESS = __ICFEDIT_region_RAM_end__ - 0x100;
+
+
+define exported symbol __KERNEL_AREA_START = __ICFEDIT_region_RAM_start__;
+define exported symbol __KERNEL_AREA_END = 0x20007FF0;
+define exported symbol __USER_AREA_START = 0x20008000;
+define exported symbol __USER_AREA_END = __ICFEDIT_region_RAM_end__;
+
+define exported symbol __KERNEL_DATA_END = __KERNEL_AREA_END;
+
+define memory mem with size = 4G;
+define region ROM_region          = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region RAM_kernel_region   = mem:[from __KERNEL_AREA_START   to __KERNEL_AREA_END];
+define region RAM_user_region     = mem:[from __USER_AREA_START   to __USER_AREA_END];
+
+define block KERNEL_MEMORY with alignment = 8 { section .kernel };
+define block KERNEL_HEAP with alignment = 32 { section .kernel_data };
+define block USER_RW_MEMORY with alignment = 32 { section .rwuser };
+define block USER_RO_MEMORY with alignment = 32 { section .rouser };
+define block USER_NO_MEMORY with alignment = 32 { section .nouser };
+define block USER_DEFAULT_MEMORY with alignment = 32 { readwrite };
+define block USER_HEAP with alignment = 32 { section .user_heap};
+keep { section .user_heap };
+
+define exported symbol __FLASHX_SECT_SIZE = 0x1000;
+define exported symbol __FLASHX_END_ADDR = __INTERNAL_FLASH_BASE + __INTERNAL_FLASH_SIZE;
+define block FLASHX_POOL with alignment = __FLASHX_SECT_SIZE { section .flashx };
+keep { section .flashx };
+
+define region FLASHX_region= mem:[from __INTERNAL_FLASH_BASE + __FLASHX_SECT_SIZE to __INTERNAL_FLASH_BASE + __INTERNAL_FLASH_SIZE - 1];
+
+initialize by copy { readwrite };
+do not initialize  { section .noinit };
+do not initialize  { section .kernel };
+do not initialize  { section .flashx };
+
+place at address mem:__ICFEDIT_intvec_start__ { readonly section .intvec };
+
+place in FLASHX_region   { block FLASHX_POOL };
+
+place in ROM_region   { readonly };
+place at address mem:__ICFEDIT_region_RAM_start__ { readwrite section .vectors_ram };
+
+/* each block/segment must be in one line (association to region) because I need kernel data start after other datas */
+place in RAM_kernel_region   { block KERNEL_MEMORY , last block KERNEL_HEAP }; //HERE, the readwrite segment should be placed for legal code build
+place in RAM_user_region   { first block USER_NO_MEMORY, block USER_RO_MEMORY, block USER_RW_MEMORY, block USER_DEFAULT_MEMORY, last block USER_HEAP };

@@ -1,0 +1,216 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="Other C/C++"
+	WorkingDir=".">
+	<Config
+		Name="Debug"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdProj"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdProj"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				OutputExts="*.o"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -O -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Rules Name="Compile">
+		<Rule
+			InputExts="*.s"
+			OutputExts="*.o"
+			LinkObject="1">
+			<Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+		</Rule>
+	</Rules>
+	<CustomFolders>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm">
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters=""/>
+	</CustomFolders>
+	<Files AutoFolders="DirectoryView">
+		<Folder Name="../APP">
+			<F N="../APP/aes.c"/>
+			<F N="../APP/aes.h"/>
+			<F N="../APP/app_cfg.h"/>
+			<F N="../APP/app_IDs.h"/>
+			<F N="../APP/CAN_task.c"/>
+			<F N="../APP/CAN_task.h"/>
+			<F N="../APP/Diagnostic_print.c"/>
+			<F N="../APP/Diagnostic_print.h"/>
+			<F N="../APP/flash_FTFL.c"/>
+			<F N="../APP/flash_FTFL.h"/>
+			<F N="../APP/Main.c"/>
+			<F N="../APP/md5.c"/>
+			<F N="../APP/md5.h"/>
+			<F N="../APP/usb_descriptor.c"/>
+			<F N="../APP/usb_descriptor.h"/>
+			<F N="../APP/USB_task.c"/>
+			<F N="../APP/USB_task.h"/>
+			<F N="../APP/USB_timer.c"/>
+			<F N="../APP/USB_timer.h"/>
+			<F N="../APP/Y_Loader.c"/>
+			<F N="../APP/Y_Loader.h"/>
+		</Folder>
+		<Folder Name="../BSP">
+			<Folder Name="PE">
+				<F N="../BSP/PE/Cpu.c"/>
+				<F N="../BSP/PE/Cpu.h"/>
+				<F N="../BSP/PE/PE_Error.h"/>
+			</Folder>
+			<F N="../BSP/app_types.h"/>
+			<F N="../BSP/CAN_control.c"/>
+			<F N="../BSP/CAN_control.h"/>
+			<F N="../BSP/GPIO.c"/>
+			<F N="../BSP/GPIO.h"/>
+			<F N="../BSP/LCD_control.c"/>
+			<F N="../BSP/LCD_control.h"/>
+			<F N="../BSP/low_level_init.c"/>
+			<F N="../BSP/MK60F15.h"/>
+			<F N="../BSP/PIT.c"/>
+			<F N="../BSP/PIT.h"/>
+			<F N="../BSP/printf.c"/>
+			<F N="../BSP/Sdelay.S"/>
+			<F N="../BSP/startup.s"/>
+			<F N="../BSP/UART.c"/>
+			<F N="../BSP/UART.h"/>
+			<F N="../BSP/vector_tbl.s"/>
+			<F N="../BSP/VIC.c"/>
+		</Folder>
+		<Folder Name="../USB_CLASS">
+			<F N="../USB_CLASS/usb_class.c"/>
+			<F N="../USB_CLASS/usb_class.h"/>
+			<F N="../USB_CLASS/usb_dfu.c"/>
+			<F N="../USB_CLASS/usb_dfu.h"/>
+			<F N="../USB_CLASS/usb_hid.c"/>
+			<F N="../USB_CLASS/usb_hid.h"/>
+		</Folder>
+		<Folder Name="../USB_DRIVER">
+			<F N="../USB_DRIVER/usb_bdt_kinetis.h"/>
+			<F N="../USB_DRIVER/usb_dci_kinetis.c"/>
+			<F N="../USB_DRIVER/usb_dci_kinetis.h"/>
+			<F N="../USB_DRIVER/usb_dciapi.h"/>
+			<F N="../USB_DRIVER/usb_devapi.h"/>
+			<F N="../USB_DRIVER/usb_driver.c"/>
+			<F N="../USB_DRIVER/usb_framework.c"/>
+			<F N="../USB_DRIVER/usb_framework.h"/>
+		</Folder>
+	</Files>
+</Project>

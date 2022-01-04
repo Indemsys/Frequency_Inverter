@@ -1,0 +1,63 @@
+/*HEADER*********************************************************************
+* 
+* Copyright (c) 2008 Freescale Semiconductor;
+* All Rights Reserved
+*
+* Copyright (c) 2004-2008 Embedded Access Inc.;
+* All Rights Reserved
+*
+* Copyright (c) 1989-2008 ARC International;
+* All Rights Reserved
+*
+*************************************************************************** 
+*
+* THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY EXPRESSED OR 
+* IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
+* OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  
+* IN NO EVENT SHALL FREESCALE OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+* INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
+* IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
+* THE POSSIBILITY OF SUCH DAMAGE.
+*
+**************************************************************************
+*
+* $FileName: edserial.h$
+* $Version : 3.0.4.0$
+* $Date    : Nov-21-2008$
+*
+* Comments:
+*
+*   Serial Embedded Debug Server header file
+*
+*END************************************************************************/
+#ifndef __edserial_h__
+#define __edserial_h__
+
+/* Error codes */
+#define EDS_SERIAL_CANT_CREATE     (EDS_SERIAL_ERROR_BASE | 0x01)
+#define EDS_SERIAL_ALREADY_CREATED (EDS_SERIAL_ERROR_BASE | 0x02)
+#define EDS_SERIAL_CANT_DESTROY    (EDS_SERIAL_ERROR_BASE | 0x03)
+#define EDS_SERIAL_IO_FAILED       (EDS_SERIAL_ERROR_BASE | 0x04)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef __TAD_COMPILE__
+extern _mqx_uint _eds_serial_create_component(char_ptr, uint_32, _mqx_uint);
+extern _mqx_uint _eds_serial_add(char_ptr, uint_32, _mqx_uint);
+extern uint_32 _eds_serial_remove(void);
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif
+
+/* EOF */

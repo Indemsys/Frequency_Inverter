@@ -1,0 +1,1763 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="Other C/C++"
+	WorkingDir=".">
+	<Config
+		Name="Debug"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdProj"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdProj"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				OutputExts="*.o"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -O -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Rules Name="Compile">
+		<Rule
+			InputExts="*.s"
+			OutputExts="*.o"
+			LinkObject="1">
+			<Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+		</Rule>
+	</Rules>
+	<CustomFolders>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm">
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters=""/>
+	</CustomFolders>
+	<Files AutoFolders="DirectoryView">
+		<Folder Name="../config">
+			<Folder Name="common">
+				<F N="../config/common/small_ram_config.h"/>
+				<F N="../config/common/verif_enabled_config.h"/>
+			</Folder>
+			<Folder Name="INV1_K60F120">
+				<F N="../config/INV1_K60F120/user_config.h"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../IAR_proj">
+			<F N="../IAR_proj/INT_FLASH_W_BOOT.icf"/>
+		</Folder>
+		<Folder Name="../Main">
+			<F N="../Main/ADC_control.c"/>
+			<F N="../Main/ADC_control.h"/>
+			<F N="../Main/App.h"/>
+			<F N="../Main/app_IDs.h"/>
+			<F N="../Main/CAN_control.c"/>
+			<F N="../Main/CAN_control.h"/>
+			<F N="../Main/LCD_control.c"/>
+			<F N="../Main/LCD_control.h"/>
+			<F N="../Main/Main.c"/>
+			<F N="../Main/MonitorVT100.c"/>
+			<F N="../Main/MonitorVT100.h"/>
+			<F N="../Main/Motor_control.c"/>
+			<F N="../Main/Motor_control.h"/>
+			<F N="../Main/Pins_control.c"/>
+			<F N="../Main/Pins_control.h"/>
+			<F N="../Main/Sdelay.S"/>
+			<F N="../Main/Sin_Cos_generator.c"/>
+			<F N="../Main/Sin_Cos_generator.h"/>
+			<F N="../Main/Temperature_control.c"/>
+			<F N="../Main/Temperature_control.h"/>
+			<F N="../Main/Tests.c"/>
+			<F N="../Main/Tests.h"/>
+			<F N="../Main/VIC_control.c"/>
+		</Folder>
+		<Folder Name="../mcc">
+			<Folder Name="source">
+				<Folder Name="include">
+					<F N="../mcc/source/include/mcc_api.h"/>
+					<F N="../mcc/source/include/mcc_common.h"/>
+					<F N="../mcc/source/include/mcc_config.h"/>
+					<F N="../mcc/source/include/mcc_mqx.h"/>
+					<F N="../mcc/source/include/mcc_vf600.h"/>
+				</Folder>
+				<Folder Name="mqx">
+					<F N="../mcc/source/mqx/mcc_mqx.c"/>
+				</Folder>
+				<F N="../mcc/source/mcc_api.c"/>
+				<F N="../mcc/source/mcc_common.c"/>
+				<F N="../mcc/source/mcc_vf600.c"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../mfs">
+			<Folder Name="source">
+				<Folder Name="generic">
+					<F N="../mfs/source/generic/dir_read.c"/>
+					<F N="../mfs/source/generic/mfs_attribute.c"/>
+					<F N="../mfs/source/generic/mfs_cluster.c"/>
+					<F N="../mfs/source/generic/mfs_create.c"/>
+					<F N="../mfs/source/generic/mfs_data_sector.c"/>
+					<F N="../mfs/source/generic/mfs_delete.c"/>
+					<F N="../mfs/source/generic/mfs_dir_entry.c"/>
+					<F N="../mfs/source/generic/mfs_directory.c"/>
+					<F N="../mfs/source/generic/mfs_fat.c"/>
+					<F N="../mfs/source/generic/mfs_format.c"/>
+					<F N="../mfs/source/generic/mfs_handle.c"/>
+					<F N="../mfs/source/generic/mfs_init.c"/>
+					<F N="../mfs/source/generic/mfs_lfn.c"/>
+					<F N="../mfs/source/generic/mfs_misc.c"/>
+					<F N="../mfs/source/generic/mfs_open.c"/>
+					<F N="../mfs/source/generic/mfs_parse.c"/>
+					<F N="../mfs/source/generic/mfs_read.c"/>
+					<F N="../mfs/source/generic/mfs_rename.c"/>
+					<F N="../mfs/source/generic/mfs_rw.c"/>
+					<F N="../mfs/source/generic/mfs_search.c"/>
+					<F N="../mfs/source/generic/mfs_time.c"/>
+					<F N="../mfs/source/generic/mfs_valdev.c"/>
+					<F N="../mfs/source/generic/mfs_write.c"/>
+					<F N="../mfs/source/generic/part_mgr.c"/>
+				</Folder>
+				<Folder Name="include">
+					<F N="../mfs/source/include/mfs.h"/>
+					<F N="../mfs/source/include/mfs_cnfg.h"/>
+					<F N="../mfs/source/include/mfs_prv.h"/>
+					<F N="../mfs/source/include/mfs_rev.h"/>
+					<F N="../mfs/source/include/part_mgr.h"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../MotorControlLib">
+			<Folder Name="GDFLIB">
+				<F N="../MotorControlLib/GDFLIB/GDFLIB_FilterFIR.h"/>
+				<F N="../MotorControlLib/GDFLIB/GDFLIB_FilterIIR1.h"/>
+				<F N="../MotorControlLib/GDFLIB/GDFLIB_FilterIIR2.h"/>
+				<F N="../MotorControlLib/GDFLIB/GDFLIB_FilterMA.h"/>
+			</Folder>
+			<Folder Name="GFLIB">
+				<F N="../MotorControlLib/GFLIB/GFLIB_Acos.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Asin.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Atan.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_AtanYX.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_AtanYXShifted.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_ControllerPIp.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_ControllerPIpAW.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_ControllerPIr.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Cos.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Hyst.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_IntegratorTR.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Limit.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_LowerLimit.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Lut1D.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Ramp.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Sign.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Sin.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Sqrt.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_Tan.h"/>
+				<F N="../MotorControlLib/GFLIB/GFLIB_UpperLimit.h"/>
+			</Folder>
+			<Folder Name="GMCLIB">
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_Clark.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_ClarkInv.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_DecouplingPMSM.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_ElimDcBusRip.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_Park.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_ParkInv.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_SvmStd.h"/>
+				<F N="../MotorControlLib/GMCLIB/GMCLIB_VectorLimit.h"/>
+			</Folder>
+			<F N="../MotorControlLib/gdflib.h"/>
+			<F N="../MotorControlLib/gflib.h"/>
+			<F N="../MotorControlLib/gmclib.h"/>
+			<F N="../MotorControlLib/intrinsic_cw.h"/>
+			<F N="../MotorControlLib/SWLIBS_Defines.h"/>
+			<F N="../MotorControlLib/SWLIBS_Inlines.h"/>
+			<F N="../MotorControlLib/SWLIBS_Typedefs.h"/>
+		</Folder>
+		<Folder Name="../mqx">
+			<Folder Name="source">
+				<Folder Name="bsp">
+					<Folder Name="INV1_K60F120">
+						<Folder Name="PE">
+							<Folder Name="INC_PDD">
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/ADC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/CAN_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/CMP_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/CMT_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/COP_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/CRC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/DAC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/DMA_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/DMAMUX_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/DRY_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/ENET_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/EWM_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/FMC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/FTFA_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/FTFE_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/FTFL_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/FTM_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/GPIO_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/I2C_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/I2S_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/LCD_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/LCDC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/LPTMR_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/MCM_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/NFC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/PDD_Types.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/PIT_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/PORT_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/RNG_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/RNGA_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/RTC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/SAI_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/SDHC_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/SIM_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/SPI_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/SysTick_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/TPM_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/TSI_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/UART0_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/UART_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/UARTLP_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/USB_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/USBHS_PDD.h"/>
+								<F N="../mqx/source/bsp/INV1_K60F120/PE/INC_PDD/WDOG_PDD.h"/>
+							</Folder>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/Cpu.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/Cpu.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/Events.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/Events.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/FTM0.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/FTM0.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/IO_Map.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/MQX1.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/MQX1.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/PE_Const.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/PE_Error.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/PE_LDD.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/PE_LDD.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/PE_Types.h"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/UART0.c"/>
+							<F N="../mqx/source/bsp/INV1_K60F120/PE/UART0.h"/>
+						</Folder>
+						<F N="../mqx/source/bsp/INV1_K60F120/app_types.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/bsp.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/bsp_cm.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/bsp_cm.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/bsp_prv.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/bsp_rev.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_adc.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_bsp.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_cfcard.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_enet.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_esdhc.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_flashx.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_gpio.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_hw.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_i2c.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_iodebug.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_lpm.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_lpm.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_nandflash.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_sai.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_sci.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_sdcard.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_spi.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_tchres.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_usb.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/init_usb_dcd.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/INV1_K60F120.h"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/mqx_init.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/mqx_main.c"/>
+						<F N="../mqx/source/bsp/INV1_K60F120/vectors.c"/>
+					</Folder>
+				</Folder>
+				<Folder Name="fio">
+					<F N="../mqx/source/fio/io_clre.c"/>
+					<F N="../mqx/source/fio/io_dopr.c"/>
+					<F N="../mqx/source/fio/io_fclos.c"/>
+					<F N="../mqx/source/fio/io_feof.c"/>
+					<F N="../mqx/source/fio/io_ferr.c"/>
+					<F N="../mqx/source/fio/io_fflsh.c"/>
+					<F N="../mqx/source/fio/io_fgetc.c"/>
+					<F N="../mqx/source/fio/io_fgetl.c"/>
+					<F N="../mqx/source/fio/io_fgets.c"/>
+					<F N="../mqx/source/fio/io_fopen.c"/>
+					<F N="../mqx/source/fio/io_fp.c"/>
+					<F N="../mqx/source/fio/io_fprt.c"/>
+					<F N="../mqx/source/fio/io_fputc.c"/>
+					<F N="../mqx/source/fio/io_fputs.c"/>
+					<F N="../mqx/source/fio/io_fscan.c"/>
+					<F N="../mqx/source/fio/io_fseek.c"/>
+					<F N="../mqx/source/fio/io_fstat.c"/>
+					<F N="../mqx/source/fio/io_ftell.c"/>
+					<F N="../mqx/source/fio/io_fung.c"/>
+					<F N="../mqx/source/fio/io_ioctl.c"/>
+					<F N="../mqx/source/fio/io_misc.c"/>
+					<F N="../mqx/source/fio/io_pntf.c"/>
+					<F N="../mqx/source/fio/io_read.c"/>
+					<F N="../mqx/source/fio/io_scanf.c"/>
+					<F N="../mqx/source/fio/io_scanl.c"/>
+					<F N="../mqx/source/fio/io_spr.c"/>
+					<F N="../mqx/source/fio/io_sscan.c"/>
+					<F N="../mqx/source/fio/io_util.c"/>
+					<F N="../mqx/source/fio/io_vpr.c"/>
+					<F N="../mqx/source/fio/io_write.c"/>
+				</Folder>
+				<Folder Name="include">
+					<F N="../mqx/source/include/charq.h"/>
+					<F N="../mqx/source/include/eds.h"/>
+					<F N="../mqx/source/include/eds_prv.h"/>
+					<F N="../mqx/source/include/edserial.h"/>
+					<F N="../mqx/source/include/edserprv.h"/>
+					<F N="../mqx/source/include/event.h"/>
+					<F N="../mqx/source/include/event_prv.h"/>
+					<F N="../mqx/source/include/fio.h"/>
+					<F N="../mqx/source/include/fio_prv.h"/>
+					<F N="../mqx/source/include/fpio_prv.h"/>
+					<F N="../mqx/source/include/gen_rev.h"/>
+					<F N="../mqx/source/include/io.h"/>
+					<F N="../mqx/source/include/io_prv.h"/>
+					<F N="../mqx/source/include/io_rev.h"/>
+					<F N="../mqx/source/include/ioctl.h"/>
+					<F N="../mqx/source/include/ipc.h"/>
+					<F N="../mqx/source/include/ipc_pcb.h"/>
+					<F N="../mqx/source/include/ipc_pcbv.h"/>
+					<F N="../mqx/source/include/ipc_prv.h"/>
+					<F N="../mqx/source/include/ipcrtprv.h"/>
+					<F N="../mqx/source/include/klog.h"/>
+					<F N="../mqx/source/include/log.h"/>
+					<F N="../mqx/source/include/log_prv.h"/>
+					<F N="../mqx/source/include/lwevent.h"/>
+					<F N="../mqx/source/include/lwevent_prv.h"/>
+					<F N="../mqx/source/include/lwlog.h"/>
+					<F N="../mqx/source/include/lwlog_prv.h"/>
+					<F N="../mqx/source/include/lwmem.h"/>
+					<F N="../mqx/source/include/lwmem_prv.h"/>
+					<F N="../mqx/source/include/lwmsgq.h"/>
+					<F N="../mqx/source/include/lwmsgq_prv.h"/>
+					<F N="../mqx/source/include/lwsem.h"/>
+					<F N="../mqx/source/include/lwtimer.h"/>
+					<F N="../mqx/source/include/lwtimer_prv.h"/>
+					<F N="../mqx/source/include/mem_prv.h"/>
+					<F N="../mqx/source/include/message.h"/>
+					<F N="../mqx/source/include/mmu.h"/>
+					<F N="../mqx/source/include/mqx.h"/>
+					<F N="../mqx/source/include/mqx_cnfg.h"/>
+					<F N="../mqx/source/include/mqx_cpudef.h"/>
+					<F N="../mqx/source/include/mqx_inc.h"/>
+					<F N="../mqx/source/include/mqx_ioc.h"/>
+					<F N="../mqx/source/include/mqx_macros.h"/>
+					<F N="../mqx/source/include/mqx_prv.h"/>
+					<F N="../mqx/source/include/mqx_str.h"/>
+					<F N="../mqx/source/include/msg_prv.h"/>
+					<F N="../mqx/source/include/mutex.h"/>
+					<F N="../mqx/source/include/mutex_prv.h"/>
+					<F N="../mqx/source/include/name.h"/>
+					<F N="../mqx/source/include/name_prv.h"/>
+					<F N="../mqx/source/include/partition.h"/>
+					<F N="../mqx/source/include/partition_prv.h"/>
+					<F N="../mqx/source/include/pcb.h"/>
+					<F N="../mqx/source/include/posix.h"/>
+					<F N="../mqx/source/include/queue.h"/>
+					<F N="../mqx/source/include/sem.h"/>
+					<F N="../mqx/source/include/sem_prv.h"/>
+					<F N="../mqx/source/include/timer.h"/>
+					<F N="../mqx/source/include/timer_prv.h"/>
+					<F N="../mqx/source/include/watchdog.h"/>
+					<F N="../mqx/source/include/watchdog_prv.h"/>
+				</Folder>
+				<Folder Name="io">
+					<Folder Name="adc">
+						<Folder Name="kadc">
+							<F N="../mqx/source/io/adc/kadc/adc_kadc.c"/>
+							<F N="../mqx/source/io/adc/kadc/adc_kadc.h"/>
+							<F N="../mqx/source/io/adc/kadc/adc_kadc_prv.h"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk20.c"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk20.h"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk40.c"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk40.h"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk60.c"/>
+							<F N="../mqx/source/io/adc/kadc/adc_mk60.h"/>
+							<F N="../mqx/source/io/adc/kadc/adt_kpdb.c"/>
+						</Folder>
+						<Folder Name="mcf522xx">
+							<F N="../mqx/source/io/adc/mcf522xx/adc_mcf522xx.c"/>
+							<F N="../mqx/source/io/adc/mcf522xx/adc_mcf522xx.h"/>
+							<F N="../mqx/source/io/adc/mcf522xx/adc_mcf522xx_prv.h"/>
+							<F N="../mqx/source/io/adc/mcf522xx/adt_pit_mcf522xx.c"/>
+						</Folder>
+						<F N="../mqx/source/io/adc/adc.c"/>
+						<F N="../mqx/source/io/adc/adc.h"/>
+						<F N="../mqx/source/io/adc/adc_conf.h"/>
+						<F N="../mqx/source/io/adc/adc_prv.h"/>
+					</Folder>
+					<Folder Name="can">
+						<Folder Name="flexcan">
+							<F N="../mqx/source/io/can/flexcan/flexcan.c"/>
+							<F N="../mqx/source/io/can/flexcan/flexcan.h"/>
+							<F N="../mqx/source/io/can/flexcan/flexcan_int.c"/>
+							<F N="../mqx/source/io/can/flexcan/flexcan_mk60.c"/>
+							<F N="../mqx/source/io/can/flexcan/flexcan_regs.h"/>
+							<F N="../mqx/source/io/can/flexcan/kflexcan.c"/>
+							<F N="../mqx/source/io/can/flexcan/kflexcan.h"/>
+							<F N="../mqx/source/io/can/flexcan/kflexcan_int.c"/>
+						</Folder>
+					</Folder>
+					<Folder Name="cm">
+						<F N="../mqx/source/io/cm/cm.c"/>
+						<F N="../mqx/source/io/cm/cm.h"/>
+						<F N="../mqx/source/io/cm/cm_kinetis.h"/>
+					</Folder>
+					<Folder Name="core_mutex">
+						<F N="../mqx/source/io/core_mutex/core_mutex.c"/>
+						<F N="../mqx/source/io/core_mutex/core_mutex.h"/>
+						<F N="../mqx/source/io/core_mutex/core_mutex_sema4.c"/>
+						<F N="../mqx/source/io/core_mutex/core_mutex_sema4.h"/>
+						<F N="../mqx/source/io/core_mutex/sema4.h"/>
+						<F N="../mqx/source/io/core_mutex/sema4_vybrid.c"/>
+					</Folder>
+					<Folder Name="crc">
+						<F N="../mqx/source/io/crc/crc_kn.c"/>
+						<F N="../mqx/source/io/crc/crc_kn.h"/>
+					</Folder>
+					<Folder Name="debug">
+						<F N="../mqx/source/io/debug/iodebug.c"/>
+						<F N="../mqx/source/io/debug/iodebug.h"/>
+						<F N="../mqx/source/io/debug/iodebug_asm.S"/>
+						<F N="../mqx/source/io/debug/iodebug_prv.h"/>
+					</Folder>
+					<Folder Name="enet">
+						<Folder Name="macnet">
+							<F N="../mqx/source/io/enet/macnet/macnet_1588.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_1588.h"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_init.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_join.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_mii.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_mk60.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_mk60.h"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_prv.h"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_receive.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_rejoin.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_rev.h"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_send.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_stop.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_util.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_vybrid.c"/>
+							<F N="../mqx/source/io/enet/macnet/macnet_vybrid.h"/>
+						</Folder>
+						<Folder Name="mcf5xxx_fec">
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5225_fec.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5225_fec.h"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_init.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_join.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_mii.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_prv.h"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_receive.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_rejoin.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_rev.h"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_send.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_stop.c"/>
+							<F N="../mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_util.c"/>
+						</Folder>
+						<Folder Name="phy">
+							<F N="../mqx/source/io/enet/phy/phy_dp83xxx.c"/>
+							<F N="../mqx/source/io/enet/phy/phy_dp83xxx.h"/>
+							<F N="../mqx/source/io/enet/phy/phy_ksz8041.c"/>
+							<F N="../mqx/source/io/enet/phy/phy_ksz8041.h"/>
+						</Folder>
+						<F N="../mqx/source/io/enet/enaddr.c"/>
+						<F N="../mqx/source/io/enet/enclose.c"/>
+						<F N="../mqx/source/io/enet/enerr.c"/>
+						<F N="../mqx/source/io/enet/enet.h"/>
+						<F N="../mqx/source/io/enet/enet_rev.h"/>
+						<F N="../mqx/source/io/enet/enet_wifi.h"/>
+						<F N="../mqx/source/io/enet/enetprv.h"/>
+						<F N="../mqx/source/io/enet/eninit.c"/>
+						<F N="../mqx/source/io/enet/enjoin.c"/>
+						<F N="../mqx/source/io/enet/enleave.c"/>
+						<F N="../mqx/source/io/enet/enmediactl.c"/>
+						<F N="../mqx/source/io/enet/enopen.c"/>
+						<F N="../mqx/source/io/enet/enrecv.c"/>
+						<F N="../mqx/source/io/enet/ensend.c"/>
+						<F N="../mqx/source/io/enet/enstat.c"/>
+						<F N="../mqx/source/io/enet/enstop.c"/>
+						<F N="../mqx/source/io/enet/enutil.c"/>
+						<F N="../mqx/source/io/enet/ethernet.h"/>
+					</Folder>
+					<Folder Name="esdhc">
+						<F N="../mqx/source/io/esdhc/esdhc.c"/>
+						<F N="../mqx/source/io/esdhc/esdhc.h"/>
+						<F N="../mqx/source/io/esdhc/esdhc_mk40.c"/>
+						<F N="../mqx/source/io/esdhc/esdhc_mk60.c"/>
+						<F N="../mqx/source/io/esdhc/esdhc_prv.h"/>
+						<F N="../mqx/source/io/esdhc/esdhc_vf65gs10.c"/>
+					</Folder>
+					<Folder Name="flashx">
+						<Folder Name="amd">
+							<F N="../mqx/source/io/flashx/amd/29bdd160.c"/>
+							<F N="../mqx/source/io/flashx/amd/29bddxxx.c"/>
+							<F N="../mqx/source/io/flashx/amd/29bddxxx.h"/>
+							<F N="../mqx/source/io/flashx/amd/29bddxxx_prv.h"/>
+							<F N="../mqx/source/io/flashx/amd/29f010.c"/>
+							<F N="../mqx/source/io/flashx/amd/29f016.c"/>
+							<F N="../mqx/source/io/flashx/amd/29f040.c"/>
+							<F N="../mqx/source/io/flashx/amd/29f080.c"/>
+							<F N="../mqx/source/io/flashx/amd/29f0xx.c"/>
+							<F N="../mqx/source/io/flashx/amd/29f0xx.h"/>
+							<F N="../mqx/source/io/flashx/amd/29f0xx_prv.h"/>
+							<F N="../mqx/source/io/flashx/amd/29f400.c"/>
+							<F N="../mqx/source/io/flashx/amd/29fx00.c"/>
+							<F N="../mqx/source/io/flashx/amd/29fx00.h"/>
+							<F N="../mqx/source/io/flashx/amd/29fx00_prv.h"/>
+							<F N="../mqx/source/io/flashx/amd/29LV160.c"/>
+							<F N="../mqx/source/io/flashx/amd/29LV320.c"/>
+							<F N="../mqx/source/io/flashx/amd/29LV640.c"/>
+							<F N="../mqx/source/io/flashx/amd/29LV800BT.c"/>
+							<F N="../mqx/source/io/flashx/amd/29PL160.c"/>
+						</Folder>
+						<Folder Name="atmel">
+							<F N="../mqx/source/io/flashx/atmel/AT49BV040.c"/>
+							<F N="../mqx/source/io/flashx/atmel/AT49BV1614A.c"/>
+							<F N="../mqx/source/io/flashx/atmel/AT49BV6416.c"/>
+							<F N="../mqx/source/io/flashx/atmel/at49bvxx.c"/>
+							<F N="../mqx/source/io/flashx/atmel/at49bvxx.h"/>
+							<F N="../mqx/source/io/flashx/atmel/at49bvxx_prv.h"/>
+						</Folder>
+						<Folder Name="freescale">
+							<F N="../mqx/source/io/flashx/freescale/flash_c90.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_c90.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_c90_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_c90i.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_c90i.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_c90i_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfe.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfe.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfe_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfl.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfl.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_ftfl_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_kinetis.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51ac.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51ac.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51ag.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51ag.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51cn.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51cn.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51em.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51em.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51fd.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51fd.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51je.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51je.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51jf.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51jf.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51jm.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51jm.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51mm.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51mm.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51qm.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51qm.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51xx.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51xx.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf51xx_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5222.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5222.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5223.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5223.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5225.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf5225.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf52xx.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf52xx.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mcf52xx_prv.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk20.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk20.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk40.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk40.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk53.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk53.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk60.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk60.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk70.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mk70.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpc5643l.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpc5643l.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpc5675k.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpc5675k.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxn20.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxn20.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxs20.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxs20.h"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxs30.c"/>
+							<F N="../mqx/source/io/flashx/freescale/flash_mpxs30.h"/>
+						</Folder>
+						<Folder Name="fujitsu">
+							<F N="../mqx/source/io/flashx/fujitsu/29dl3xx.c"/>
+							<F N="../mqx/source/io/flashx/fujitsu/29dl3xx.h"/>
+							<F N="../mqx/source/io/flashx/fujitsu/29dl3xx_prv.h"/>
+						</Folder>
+						<Folder Name="istrata">
+							<F N="../mqx/source/io/flashx/istrata/istrata.c"/>
+							<F N="../mqx/source/io/flashx/istrata/istrata.h"/>
+							<F N="../mqx/source/io/flashx/istrata/istrata1.c"/>
+							<F N="../mqx/source/io/flashx/istrata/istrata2.c"/>
+							<F N="../mqx/source/io/flashx/istrata/istrata4.c"/>
+							<F N="../mqx/source/io/flashx/istrata/istrataprv.h"/>
+							<F N="../mqx/source/io/flashx/istrata/jm28f128j3a.c"/>
+							<F N="../mqx/source/io/flashx/istrata/te28f160.c"/>
+						</Folder>
+						<Folder Name="macronix">
+							<F N="../mqx/source/io/flashx/macronix/MX29LV640E_TB.c"/>
+						</Folder>
+						<Folder Name="sharp">
+							<F N="../mqx/source/io/flashx/sharp/lh28f016.c"/>
+							<F N="../mqx/source/io/flashx/sharp/lh28f128.c"/>
+							<F N="../mqx/source/io/flashx/sharp/lh28fxxx.c"/>
+							<F N="../mqx/source/io/flashx/sharp/lh28fxxx.h"/>
+							<F N="../mqx/source/io/flashx/sharp/lh28fxxx_prv.h"/>
+						</Folder>
+						<Folder Name="spansion">
+							<F N="../mqx/source/io/flashx/spansion/29glxxxN.c"/>
+							<F N="../mqx/source/io/flashx/spansion/29glxxxN.h"/>
+							<F N="../mqx/source/io/flashx/spansion/29glxxxN_prv.h"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxJ.c"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxJ.h"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxJ_prv.h"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxN.c"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxN.h"/>
+							<F N="../mqx/source/io/flashx/spansion/29wsxxxN_prv.h"/>
+							<F N="../mqx/source/io/flashx/spansion/s29ws128.c"/>
+							<F N="../mqx/source/io/flashx/spansion/s29ws64.c"/>
+						</Folder>
+						<F N="../mqx/source/io/flashx/flashx.c"/>
+						<F N="../mqx/source/io/flashx/flashx.h"/>
+						<F N="../mqx/source/io/flashx/flashxprv.h"/>
+					</Folder>
+					<Folder Name="gpio">
+						<Folder Name="kgpio">
+							<F N="../mqx/source/io/gpio/kgpio/io_gpio_kgpio.c"/>
+							<F N="../mqx/source/io/gpio/kgpio/io_gpio_kgpio.h"/>
+							<F N="../mqx/source/io/gpio/kgpio/io_gpio_kgpio_prv.h"/>
+						</Folder>
+						<Folder Name="mcf5225">
+							<F N="../mqx/source/io/gpio/mcf5225/io_gpio_mcf5225.c"/>
+							<F N="../mqx/source/io/gpio/mcf5225/io_gpio_mcf5225.h"/>
+							<F N="../mqx/source/io/gpio/mcf5225/io_gpio_mcf5225_prv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/gpio/io_gpio.c"/>
+						<F N="../mqx/source/io/gpio/io_gpio.h"/>
+						<F N="../mqx/source/io/gpio/io_gpio_prv.h"/>
+					</Folder>
+					<Folder Name="hmi">
+						<Folder Name="TSS">
+							<Folder Name="shared">
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_API.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_DataTypes.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_Freemaster.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_GPIO.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_Sensor.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_Sensor.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorGPIO.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorGPIO.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorTSI.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorTSI.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorTSIL.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SensorTSIL.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_StatusCodes.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SystemSetupData.c"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_SystemSetupVal.h"/>
+								<F N="../mqx/source/io/hmi/TSS/shared/TSS_Timer.h"/>
+							</Folder>
+						</Folder>
+						<F N="../mqx/source/io/hmi/btnled.c"/>
+						<F N="../mqx/source/io/hmi/btnled.h"/>
+						<F N="../mqx/source/io/hmi/derivative.h"/>
+						<F N="../mqx/source/io/hmi/hmi_client.c"/>
+						<F N="../mqx/source/io/hmi/hmi_client.h"/>
+						<F N="../mqx/source/io/hmi/hmi_lwgpio_provider.c"/>
+						<F N="../mqx/source/io/hmi/hmi_lwgpio_provider.h"/>
+						<F N="../mqx/source/io/hmi/hmi_provider.h"/>
+						<F N="../mqx/source/io/hmi/hmi_tss_provider.c"/>
+						<F N="../mqx/source/io/hmi/hmi_tss_provider.h"/>
+						<F N="../mqx/source/io/hmi/hmi_uids.h"/>
+					</Folder>
+					<Folder Name="hwtimer">
+						<F N="../mqx/source/io/hwtimer/hwtimer.c"/>
+						<F N="../mqx/source/io/hwtimer/hwtimer.h"/>
+						<F N="../mqx/source/io/hwtimer/hwtimer_kinetis.c"/>
+						<F N="../mqx/source/io/hwtimer/hwtimer_pit.c"/>
+						<F N="../mqx/source/io/hwtimer/hwtimer_pit.h"/>
+					</Folder>
+					<Folder Name="i2c">
+						<Folder Name="int">
+							<F N="../mqx/source/io/i2c/int/i2c_int.c"/>
+							<F N="../mqx/source/io/i2c/int/i2c_int_ki2c.c"/>
+							<F N="../mqx/source/io/i2c/int/i2c_int_mcf52xx.c"/>
+							<F N="../mqx/source/io/i2c/int/i2c_int_prv.h"/>
+							<F N="../mqx/source/io/i2c/int/i2c_int_qi2c.c"/>
+						</Folder>
+						<Folder Name="polled">
+							<F N="../mqx/source/io/i2c/polled/i2c_pol.c"/>
+							<F N="../mqx/source/io/i2c/polled/i2c_pol_ki2c.c"/>
+							<F N="../mqx/source/io/i2c/polled/i2c_pol_prv.h"/>
+							<F N="../mqx/source/io/i2c/polled/i2c_pol_qi2c.c"/>
+						</Folder>
+						<F N="../mqx/source/io/i2c/i2c.h"/>
+						<F N="../mqx/source/io/i2c/i2c_ki2c.h"/>
+						<F N="../mqx/source/io/i2c/i2c_ki2c_prv.h"/>
+						<F N="../mqx/source/io/i2c/i2c_mcf5225.c"/>
+						<F N="../mqx/source/io/i2c/i2c_mcf52xx.h"/>
+						<F N="../mqx/source/io/i2c/i2c_mcf52xx_prv.h"/>
+						<F N="../mqx/source/io/i2c/i2c_mk20.c"/>
+						<F N="../mqx/source/io/i2c/i2c_mk40.c"/>
+						<F N="../mqx/source/io/i2c/i2c_mk60.c"/>
+						<F N="../mqx/source/io/i2c/i2c_qi2c.h"/>
+						<F N="../mqx/source/io/i2c/i2c_qi2c_prv.h"/>
+						<F N="../mqx/source/io/i2c/qi2c.h"/>
+					</Folder>
+					<Folder Name="i2s">
+						<Folder Name="int">
+							<F N="../mqx/source/io/i2s/int/i2s_int.c"/>
+							<F N="../mqx/source/io/i2s/int/i2s_int_ki2s.c"/>
+							<F N="../mqx/source/io/i2s/int/i2s_int_prv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/i2s/i2s.h"/>
+						<F N="../mqx/source/io/i2s/i2s_audio.h"/>
+						<F N="../mqx/source/io/i2s/i2s_ki2s.h"/>
+						<F N="../mqx/source/io/i2s/i2s_ki2s_prv.h"/>
+						<F N="../mqx/source/io/i2s/i2s_mk40.c"/>
+					</Folder>
+					<Folder Name="int_ctrl">
+						<F N="../mqx/source/io/int_ctrl/int_ctrl_mcf5225.c"/>
+						<F N="../mqx/source/io/int_ctrl/int_ctrl_mcf5225.h"/>
+						<F N="../mqx/source/io/int_ctrl/int_ctrl_qintc.c"/>
+						<F N="../mqx/source/io/int_ctrl/int_ctrl_qintc.h"/>
+						<F N="../mqx/source/io/int_ctrl/qintc.h"/>
+					</Folder>
+					<Folder Name="io_dun">
+						<F N="../mqx/source/io/io_dun/io_dun.c"/>
+						<F N="../mqx/source/io/io_dun/io_dun.h"/>
+					</Folder>
+					<Folder Name="io_mem">
+						<F N="../mqx/source/io/io_mem/io_mem.c"/>
+						<F N="../mqx/source/io/io_mem/io_mem.h"/>
+						<F N="../mqx/source/io/io_mem/iomemprv.h"/>
+					</Folder>
+					<Folder Name="io_null">
+						<F N="../mqx/source/io/io_null/io_null.c"/>
+						<F N="../mqx/source/io/io_null/io_null.h"/>
+						<F N="../mqx/source/io/io_null/ionulprv.h"/>
+					</Folder>
+					<Folder Name="lpm">
+						<F N="../mqx/source/io/lpm/lpm.c"/>
+						<F N="../mqx/source/io/lpm/lpm.h"/>
+						<F N="../mqx/source/io/lpm/lpm_kinetis.h"/>
+						<F N="../mqx/source/io/lpm/lpm_mc.c"/>
+						<F N="../mqx/source/io/lpm/lpm_prv.h"/>
+						<F N="../mqx/source/io/lpm/lpm_smc.c"/>
+					</Folder>
+					<Folder Name="lwadc">
+						<F N="../mqx/source/io/lwadc/lwadc.h"/>
+						<F N="../mqx/source/io/lwadc/lwadc_mpxsxx.c"/>
+						<F N="../mqx/source/io/lwadc/lwadc_mpxsxx.h"/>
+						<F N="../mqx/source/io/lwadc/lwadc_mpxsxx_prv.h"/>
+						<F N="../mqx/source/io/lwadc/lwadc_vadc.c"/>
+						<F N="../mqx/source/io/lwadc/lwadc_vadc.h"/>
+						<F N="../mqx/source/io/lwadc/lwadc_vadc_prv.h"/>
+						<F N="../mqx/source/io/lwadc/lwadc_vybrid.c"/>
+						<F N="../mqx/source/io/lwadc/pxadc.h"/>
+					</Folder>
+					<Folder Name="lwgpio">
+						<F N="../mqx/source/io/lwgpio/lwgpio.c"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio.h"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_kgpio.c"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_kgpio.h"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_mcf5225.c"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_mcf5225.h"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_siul.c"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_siul.h"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_vgpio.c"/>
+						<F N="../mqx/source/io/lwgpio/lwgpio_vgpio.h"/>
+					</Folder>
+					<Folder Name="nandflash">
+						<Folder Name="nand_devices">
+							<F N="../mqx/source/io/nandflash/nand_devices/MT29F2G16.c"/>
+						</Folder>
+						<Folder Name="nfc">
+							<F N="../mqx/source/io/nandflash/nfc/nfc.c"/>
+							<F N="../mqx/source/io/nandflash/nfc/nfc.h"/>
+							<F N="../mqx/source/io/nandflash/nfc/nfc_k60f120m.c"/>
+						</Folder>
+						<F N="../mqx/source/io/nandflash/nandflash.c"/>
+						<F N="../mqx/source/io/nandflash/nandflash.h"/>
+						<F N="../mqx/source/io/nandflash/nandflashprv.h"/>
+					</Folder>
+					<Folder Name="pcb">
+						<Folder Name="mqxa">
+							<F N="../mqx/source/io/pcb/mqxa/pcb_mqxa.c"/>
+							<F N="../mqx/source/io/pcb/mqxa/pcb_mqxa.h"/>
+							<F N="../mqx/source/io/pcb/mqxa/pcbmqxav.h"/>
+						</Folder>
+						<Folder Name="shmem">
+							<F N="../mqx/source/io/pcb/shmem/pcb_shm.c"/>
+							<F N="../mqx/source/io/pcb/shmem/pcb_shm.h"/>
+							<F N="../mqx/source/io/pcb/shmem/pcbshmv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/pcb/io_pcb.c"/>
+						<F N="../mqx/source/io/pcb/io_pcb.h"/>
+						<F N="../mqx/source/io/pcb/io_pcb2.c"/>
+						<F N="../mqx/source/io/pcb/iop_inst.c"/>
+						<F N="../mqx/source/io/pcb/iopcbprv.h"/>
+					</Folder>
+					<Folder Name="pccard">
+						<F N="../mqx/source/io/pccard/apccard.h"/>
+						<F N="../mqx/source/io/pccard/pccardflexbus.c"/>
+						<F N="../mqx/source/io/pccard/pccardflexbus.h"/>
+						<F N="../mqx/source/io/pccard/pccardflexbuspr.h"/>
+					</Folder>
+					<Folder Name="pcflash">
+						<F N="../mqx/source/io/pcflash/apcflash.c"/>
+						<F N="../mqx/source/io/pcflash/apcflshpr.h"/>
+						<F N="../mqx/source/io/pcflash/ata.h"/>
+						<F N="../mqx/source/io/pcflash/pcflash.h"/>
+					</Folder>
+					<Folder Name="pipe">
+						<F N="../mqx/source/io/pipe/io_pipe.c"/>
+						<F N="../mqx/source/io/pipe/io_pipe.h"/>
+						<F N="../mqx/source/io/pipe/pipe_prv.h"/>
+					</Folder>
+					<Folder Name="rtc">
+						<F N="../mqx/source/io/rtc/krtc.c"/>
+						<F N="../mqx/source/io/rtc/krtc.h"/>
+						<F N="../mqx/source/io/rtc/krtc_ext.c"/>
+						<F N="../mqx/source/io/rtc/krtc_ext.h"/>
+						<F N="../mqx/source/io/rtc/qrtc.c"/>
+						<F N="../mqx/source/io/rtc/qrtc.h"/>
+						<F N="../mqx/source/io/rtc/rtc.c"/>
+						<F N="../mqx/source/io/rtc/rtc.h"/>
+						<F N="../mqx/source/io/rtc/rtc_common.c"/>
+						<F N="../mqx/source/io/rtc/rtc_mcf5225.c"/>
+						<F N="../mqx/source/io/rtc/rtc_mcf52xx.c"/>
+						<F N="../mqx/source/io/rtc/rtc_mcf52xx.h"/>
+					</Folder>
+					<Folder Name="sai">
+						<Folder Name="int">
+							<F N="../mqx/source/io/sai/int/sai_int.c"/>
+							<F N="../mqx/source/io/sai/int/sai_int_ksai.c"/>
+							<F N="../mqx/source/io/sai/int/sai_int_prv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/sai/sai.h"/>
+						<F N="../mqx/source/io/sai/sai_audio.h"/>
+						<F N="../mqx/source/io/sai/sai_ksai.h"/>
+						<F N="../mqx/source/io/sai/sai_ksai_prv.h"/>
+						<F N="../mqx/source/io/sai/sai_mk20.c"/>
+						<F N="../mqx/source/io/sai/sai_mk60.c"/>
+					</Folder>
+					<Folder Name="sdcard">
+						<Folder Name="sdcard_esdhc">
+							<F N="../mqx/source/io/sdcard/sdcard_esdhc/sdcard_esdhc.c"/>
+							<F N="../mqx/source/io/sdcard/sdcard_esdhc/sdcard_esdhc.h"/>
+						</Folder>
+						<Folder Name="sdcard_spi">
+							<F N="../mqx/source/io/sdcard/sdcard_spi/sdcard_spi.c"/>
+							<F N="../mqx/source/io/sdcard/sdcard_spi/sdcard_spi.h"/>
+						</Folder>
+						<F N="../mqx/source/io/sdcard/sdcard.c"/>
+						<F N="../mqx/source/io/sdcard/sdcard.h"/>
+						<F N="../mqx/source/io/sdcard/sdcard_prv.h"/>
+					</Folder>
+					<Folder Name="serial">
+						<Folder Name="int">
+							<F N="../mqx/source/io/serial/int/serl_int.c"/>
+							<F N="../mqx/source/io/serial/int/serl_int_kuart.c"/>
+							<F N="../mqx/source/io/serial/int/serl_int_linflexd.c"/>
+							<F N="../mqx/source/io/serial/int/serl_int_mcf52xx.c"/>
+						</Folder>
+						<Folder Name="polled">
+							<F N="../mqx/source/io/serial/polled/serl_pol.c"/>
+							<F N="../mqx/source/io/serial/polled/serl_pol_kuart.c"/>
+							<F N="../mqx/source/io/serial/polled/serl_pol_linflexd.c"/>
+							<F N="../mqx/source/io/serial/polled/serl_pol_mcf52xx.c"/>
+						</Folder>
+						<F N="../mqx/source/io/serial/io_sinit.c"/>
+						<F N="../mqx/source/io/serial/linflexd.h"/>
+						<F N="../mqx/source/io/serial/serial.h"/>
+						<F N="../mqx/source/io/serial/serinprv.h"/>
+						<F N="../mqx/source/io/serial/serl_kuart.h"/>
+						<F N="../mqx/source/io/serial/serl_linflexd.h"/>
+						<F N="../mqx/source/io/serial/serl_mk20.c"/>
+						<F N="../mqx/source/io/serial/serl_mk40.c"/>
+						<F N="../mqx/source/io/serial/serl_mk60.c"/>
+						<F N="../mqx/source/io/serial/serl_vybrid.c"/>
+						<F N="../mqx/source/io/serial/serplprv.h"/>
+					</Folder>
+					<Folder Name="spi">
+						<F N="../mqx/source/io/spi/spi.c"/>
+						<F N="../mqx/source/io/spi/spi.h"/>
+						<F N="../mqx/source/io/spi/spi_dspi.c"/>
+						<F N="../mqx/source/io/spi/spi_dspi.h"/>
+						<F N="../mqx/source/io/spi/spi_dspi_prv.h"/>
+						<F N="../mqx/source/io/spi/spi_mk20.c"/>
+						<F N="../mqx/source/io/spi/spi_mk40.c"/>
+						<F N="../mqx/source/io/spi/spi_mk60.c"/>
+						<F N="../mqx/source/io/spi/spi_prv.h"/>
+					</Folder>
+					<Folder Name="spi_legacy">
+						<Folder Name="int">
+							<F N="../mqx/source/io/spi_legacy/int/spi_int.c"/>
+							<F N="../mqx/source/io/spi_legacy/int/spi_int_mcf5xxx_qspi.c"/>
+							<F N="../mqx/source/io/spi_legacy/int/spi_int_prv.h"/>
+						</Folder>
+						<Folder Name="polled">
+							<F N="../mqx/source/io/spi_legacy/polled/spi_pol.c"/>
+							<F N="../mqx/source/io/spi_legacy/polled/spi_pol_mcf5xxx_qspi.c"/>
+							<F N="../mqx/source/io/spi_legacy/polled/spi_pol_prv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/spi_legacy/spi.h"/>
+						<F N="../mqx/source/io/spi_legacy/spi_mcf5225_qspi.c"/>
+						<F N="../mqx/source/io/spi_legacy/spi_mcf5xxx_qspi.h"/>
+						<F N="../mqx/source/io/spi_legacy/spi_mcf5xxx_qspi_prv.h"/>
+					</Folder>
+					<Folder Name="tchres">
+						<F N="../mqx/source/io/tchres/tchres.c"/>
+						<F N="../mqx/source/io/tchres/tchres.h"/>
+						<F N="../mqx/source/io/tchres/tchres_prv.h"/>
+					</Folder>
+					<Folder Name="tfs">
+						<F N="../mqx/source/io/tfs/tfs.c"/>
+						<F N="../mqx/source/io/tfs/tfs.h"/>
+						<F N="../mqx/source/io/tfs/tfs_prv.h"/>
+					</Folder>
+					<Folder Name="timer">
+						<F N="../mqx/source/io/timer/qpit.h"/>
+						<F N="../mqx/source/io/timer/timer_e200dec.c"/>
+						<F N="../mqx/source/io/timer/timer_e200dec.h"/>
+						<F N="../mqx/source/io/timer/timer_kinetis.c"/>
+						<F N="../mqx/source/io/timer/timer_lpt.c"/>
+						<F N="../mqx/source/io/timer/timer_lpt.h"/>
+						<F N="../mqx/source/io/timer/timer_lpt_kinetis.c"/>
+						<F N="../mqx/source/io/timer/timer_mcf5225.c"/>
+						<F N="../mqx/source/io/timer/timer_pit.c"/>
+						<F N="../mqx/source/io/timer/timer_pit.h"/>
+						<F N="../mqx/source/io/timer/timer_qpit.c"/>
+						<F N="../mqx/source/io/timer/timer_qpit.h"/>
+					</Folder>
+					<Folder Name="usb">
+						<F N="../mqx/source/io/usb/if_dev_ehci.h"/>
+						<F N="../mqx/source/io/usb/if_dev_khci.h"/>
+						<F N="../mqx/source/io/usb/if_host_ehci.h"/>
+						<F N="../mqx/source/io/usb/if_host_khci.h"/>
+						<F N="../mqx/source/io/usb/usb_bsp.h"/>
+						<F N="../mqx/source/io/usb/usb_install.c"/>
+						<F N="../mqx/source/io/usb/usb_mcf5225.c"/>
+						<F N="../mqx/source/io/usb/usb_mcf5225_device.c"/>
+						<F N="../mqx/source/io/usb/usb_mk20.c"/>
+						<F N="../mqx/source/io/usb/usb_mk20_device.c"/>
+						<F N="../mqx/source/io/usb/usb_mk40.c"/>
+						<F N="../mqx/source/io/usb/usb_mk40_device.c"/>
+						<F N="../mqx/source/io/usb/usb_mk60.c"/>
+						<F N="../mqx/source/io/usb/usb_mk60_device.c"/>
+						<F N="../mqx/source/io/usb/usb_mk60f.c"/>
+						<F N="../mqx/source/io/usb/usb_mk60f_device.c"/>
+						<F N="../mqx/source/io/usb/usb_vybrid.c"/>
+						<F N="../mqx/source/io/usb/usb_vybrid_device.c"/>
+					</Folder>
+					<Folder Name="usb_dcd">
+						<Folder Name="int">
+							<F N="../mqx/source/io/usb_dcd/int/usb_dcd_int.c"/>
+							<F N="../mqx/source/io/usb_dcd/int/usb_dcd_int_kn.c"/>
+							<F N="../mqx/source/io/usb_dcd/int/usb_dcd_int_prv.h"/>
+						</Folder>
+						<Folder Name="polled">
+							<F N="../mqx/source/io/usb_dcd/polled/usb_dcd_pol.c"/>
+							<F N="../mqx/source/io/usb_dcd/polled/usb_dcd_pol_kn.c"/>
+							<F N="../mqx/source/io/usb_dcd/polled/usb_dcd_pol_prv.h"/>
+						</Folder>
+						<F N="../mqx/source/io/usb_dcd/usb_dcd.h"/>
+						<F N="../mqx/source/io/usb_dcd/usb_dcd_kn.h"/>
+						<F N="../mqx/source/io/usb_dcd/usb_dcd_kn_prv.h"/>
+						<F N="../mqx/source/io/usb_dcd/usb_dcd_mk60.c"/>
+					</Folder>
+					<F N="../mqx/source/io/io_ghand.c"/>
+					<F N="../mqx/source/io/io_init.c"/>
+					<F N="../mqx/source/io/io_inst.c"/>
+					<F N="../mqx/source/io/io_instx.c"/>
+					<F N="../mqx/source/io/io_shand.c"/>
+					<F N="../mqx/source/io/io_uinst.c"/>
+				</Folder>
+				<Folder Name="kernel">
+					<F N="../mqx/source/kernel/event.c"/>
+					<F N="../mqx/source/kernel/idletask.c"/>
+					<F N="../mqx/source/kernel/int.c"/>
+					<F N="../mqx/source/kernel/ipc.c"/>
+					<F N="../mqx/source/kernel/klog.c"/>
+					<F N="../mqx/source/kernel/log.c"/>
+					<F N="../mqx/source/kernel/lwevent.c"/>
+					<F N="../mqx/source/kernel/lwlog.c"/>
+					<F N="../mqx/source/kernel/lwmem.c"/>
+					<F N="../mqx/source/kernel/lwmsgq.c"/>
+					<F N="../mqx/source/kernel/lwsem.c"/>
+					<F N="../mqx/source/kernel/lwtimer.c"/>
+					<F N="../mqx/source/kernel/mem.c"/>
+					<F N="../mqx/source/kernel/mqx.c"/>
+					<F N="../mqx/source/kernel/msg.c"/>
+					<F N="../mqx/source/kernel/msgpool.c"/>
+					<F N="../mqx/source/kernel/msgq.c"/>
+					<F N="../mqx/source/kernel/mutex.c"/>
+					<F N="../mqx/source/kernel/name.c"/>
+					<F N="../mqx/source/kernel/partition.c"/>
+					<F N="../mqx/source/kernel/queue.c"/>
+					<F N="../mqx/source/kernel/sched.c"/>
+					<F N="../mqx/source/kernel/sem.c"/>
+					<F N="../mqx/source/kernel/task.c"/>
+					<F N="../mqx/source/kernel/taskq.c"/>
+					<F N="../mqx/source/kernel/time.c"/>
+					<F N="../mqx/source/kernel/time_tables.c"/>
+					<F N="../mqx/source/kernel/timer.c"/>
+					<F N="../mqx/source/kernel/watchdog.c"/>
+				</Folder>
+				<Folder Name="psp">
+					<Folder Name="cortex_m">
+						<Folder Name="compiler">
+							<Folder Name="iar">
+								<F N="../mqx/source/psp/cortex_m/compiler/iar/asm_mac.h"/>
+								<F N="../mqx/source/psp/cortex_m/compiler/iar/comp.c"/>
+								<F N="../mqx/source/psp/cortex_m/compiler/iar/comp.h"/>
+								<F N="../mqx/source/psp/cortex_m/compiler/iar/kernel_symbols.S"/>
+							</Folder>
+						</Folder>
+						<Folder Name="core">
+							<Folder Name="M4">
+								<F N="../mqx/source/psp/cortex_m/core/M4/boot.S"/>
+								<F N="../mqx/source/psp/cortex_m/core/M4/dispatch.S"/>
+								<F N="../mqx/source/psp/cortex_m/core/M4/psp_prv.inc"/>
+							</Folder>
+						</Folder>
+						<Folder Name="cpu">
+							<F N="../mqx/source/psp/cortex_m/cpu/kinetis_fcan.h"/>
+							<F N="../mqx/source/psp/cortex_m/cpu/MK60F15.h"/>
+						</Folder>
+						<F N="../mqx/source/psp/cortex_m/cache.c"/>
+						<F N="../mqx/source/psp/cortex_m/cortex.c"/>
+						<F N="../mqx/source/psp/cortex_m/cortex.h"/>
+						<F N="../mqx/source/psp/cortex_m/int_gkis.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_inst.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_kisr.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_pvta.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_unx.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_vtab.c"/>
+						<F N="../mqx/source/psp/cortex_m/int_xcpt.c"/>
+						<F N="../mqx/source/psp/cortex_m/ipsum.c"/>
+						<F N="../mqx/source/psp/cortex_m/kinetis.h"/>
+						<F N="../mqx/source/psp/cortex_m/kinetis_mpu.c"/>
+						<F N="../mqx/source/psp/cortex_m/kinetis_mpu.h"/>
+						<F N="../mqx/source/psp/cortex_m/mem_copy.c"/>
+						<F N="../mqx/source/psp/cortex_m/mem_zero.c"/>
+						<F N="../mqx/source/psp/cortex_m/nvic.c"/>
+						<F N="../mqx/source/psp/cortex_m/nvic.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_abi.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_comp.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_cpu.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_cpudef.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_dati.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_gelms.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_hoti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_iinit.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_mat1.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_mat2.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_mat3.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_math.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_miti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_msti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_mstiq.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_nsti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_prv.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_psti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_rev.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_seti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_supp.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_supp.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tiad.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tida.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tihr.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_time.h"/>
+						<F N="../mqx/source/psp/cortex_m/psp_timn.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tims.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tinm.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tins.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tiol.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tipr.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tips.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tise.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tisu.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tius.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tixd.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_tkti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psp_usti.c"/>
+						<F N="../mqx/source/psp/cortex_m/psptypes.h"/>
+						<F N="../mqx/source/psp/cortex_m/sc_irdyq.c"/>
+						<F N="../mqx/source/psp/cortex_m/stack_bu.c"/>
+						<F N="../mqx/source/psp/cortex_m/stack_de.c"/>
+						<F N="../mqx/source/psp/cortex_m/stack_st.c"/>
+						<F N="../mqx/source/psp/cortex_m/types.inc"/>
+					</Folder>
+				</Folder>
+				<Folder Name="string">
+					<F N="../mqx/source/string/str_utos.c"/>
+					<F N="../mqx/source/string/strnlen.c"/>
+				</Folder>
+				<Folder Name="tad">
+					<F N="../mqx/source/tad/tad.c"/>
+					<F N="../mqx/source/tad/tad.h"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../rtcs">
+			<Folder Name="source">
+				<Folder Name="apps">
+					<F N="../rtcs/source/apps/binfile.c"/>
+					<F N="../rtcs/source/apps/coff.c"/>
+					<F N="../rtcs/source/apps/dhcpsrv.c"/>
+					<F N="../rtcs/source/apps/echosrv.c"/>
+					<F N="../rtcs/source/apps/eds.c"/>
+					<F N="../rtcs/source/apps/ftpc.c"/>
+					<F N="../rtcs/source/apps/ftpc_cmd.c"/>
+					<F N="../rtcs/source/apps/ftpclnt.c"/>
+					<F N="../rtcs/source/apps/ftpd.c"/>
+					<F N="../rtcs/source/apps/ftpd_cmd.c"/>
+					<F N="../rtcs/source/apps/ftpd_msg.c"/>
+					<F N="../rtcs/source/apps/loadtb.c"/>
+					<F N="../rtcs/source/apps/loadtc.c"/>
+					<F N="../rtcs/source/apps/loadts.c"/>
+					<F N="../rtcs/source/apps/resolver.c"/>
+					<F N="../rtcs/source/apps/rtcsload.c"/>
+					<F N="../rtcs/source/apps/rtcssh.c"/>
+					<F N="../rtcs/source/apps/sntp.c"/>
+					<F N="../rtcs/source/apps/sockio.c"/>
+					<F N="../rtcs/source/apps/srec32.c"/>
+					<F N="../rtcs/source/apps/srecord.c"/>
+					<F N="../rtcs/source/apps/telnet.c"/>
+					<F N="../rtcs/source/apps/telnetio.c"/>
+					<F N="../rtcs/source/apps/telnsrv.c"/>
+					<F N="../rtcs/source/apps/tftp.c"/>
+					<F N="../rtcs/source/apps/tftpacc.c"/>
+					<F N="../rtcs/source/apps/tftpsrv.c"/>
+					<F N="../rtcs/source/apps/tftputil.c"/>
+				</Folder>
+				<Folder Name="httpd">
+					<F N="../rtcs/source/httpd/httpd.c"/>
+					<F N="../rtcs/source/httpd/httpd.h"/>
+					<F N="../rtcs/source/httpd/httpd_cnfg.h"/>
+					<F N="../rtcs/source/httpd/httpd_mqx.h"/>
+					<F N="../rtcs/source/httpd/httpd_poll.c"/>
+					<F N="../rtcs/source/httpd/httpd_prv.h"/>
+					<F N="../rtcs/source/httpd/httpd_supp.c"/>
+					<F N="../rtcs/source/httpd/httpd_supp.h"/>
+					<F N="../rtcs/source/httpd/httpd_task.c"/>
+					<F N="../rtcs/source/httpd/httpd_types.h"/>
+					<F N="../rtcs/source/httpd/httpd_wrapper.h"/>
+				</Folder>
+				<Folder Name="if">
+					<F N="../rtcs/source/if/arpcmd.c"/>
+					<F N="../rtcs/source/if/dnshosts.c"/>
+					<F N="../rtcs/source/if/dnsinit.c"/>
+					<F N="../rtcs/source/if/dnsutil.c"/>
+					<F N="../rtcs/source/if/getaddrinfo.c"/>
+					<F N="../rtcs/source/if/getnameinfo.c"/>
+					<F N="../rtcs/source/if/ghbname.c"/>
+					<F N="../rtcs/source/if/ifadd.c"/>
+					<F N="../rtcs/source/if/ifbootp.c"/>
+					<F N="../rtcs/source/if/ifdhcp.c"/>
+					<F N="../rtcs/source/if/ifdns.c"/>
+					<F N="../rtcs/source/if/ifppp.c"/>
+					<F N="../rtcs/source/if/ifrem.c"/>
+					<F N="../rtcs/source/if/ifstat.c"/>
+					<F N="../rtcs/source/if/iftraps.c"/>
+					<F N="../rtcs/source/if/iftunnel.c"/>
+					<F N="../rtcs/source/if/inet.c"/>
+					<F N="../rtcs/source/if/inet_ntop.c"/>
+					<F N="../rtcs/source/if/inet_pton.c"/>
+					<F N="../rtcs/source/if/ipcfg.c"/>
+					<F N="../rtcs/source/if/ipcfg6.c"/>
+					<F N="../rtcs/source/if/iwcfg.c"/>
+					<F N="../rtcs/source/if/ping.c"/>
+					<F N="../rtcs/source/if/ping6.c"/>
+					<F N="../rtcs/source/if/rtcs.c"/>
+					<F N="../rtcs/source/if/rtcscmd.c"/>
+					<F N="../rtcs/source/if/rtcsdela.c"/>
+					<F N="../rtcs/source/if/rtcsglob.c"/>
+					<F N="../rtcs/source/if/rtcshost.c"/>
+					<F N="../rtcs/source/if/rtcsinit.c"/>
+					<F N="../rtcs/source/if/rtcslog0.c"/>
+					<F N="../rtcs/source/if/rtcslog1.c"/>
+					<F N="../rtcs/source/if/rtcsrand.c"/>
+					<F N="../rtcs/source/if/sdgram.c"/>
+					<F N="../rtcs/source/if/select.c"/>
+					<F N="../rtcs/source/if/sockutil.c"/>
+					<F N="../rtcs/source/if/soigmp.c"/>
+					<F N="../rtcs/source/if/soip.c"/>
+					<F N="../rtcs/source/if/solink.c"/>
+					<F N="../rtcs/source/if/sosel0.c"/>
+					<F N="../rtcs/source/if/sosel1.c"/>
+					<F N="../rtcs/source/if/soselall.c"/>
+					<F N="../rtcs/source/if/soselset.c"/>
+					<F N="../rtcs/source/if/sosock.c"/>
+					<F N="../rtcs/source/if/sotcp.c"/>
+					<F N="../rtcs/source/if/soudp.c"/>
+					<F N="../rtcs/source/if/sstream.c"/>
+				</Folder>
+				<Folder Name="include">
+					<F N="../rtcs/source/include/addrinfo.h"/>
+					<F N="../rtcs/source/include/arp.h"/>
+					<F N="../rtcs/source/include/arp_prv.h"/>
+					<F N="../rtcs/source/include/arpif.h"/>
+					<F N="../rtcs/source/include/asn1.h"/>
+					<F N="../rtcs/source/include/bootp.h"/>
+					<F N="../rtcs/source/include/ccp.h"/>
+					<F N="../rtcs/source/include/chap.h"/>
+					<F N="../rtcs/source/include/checksum.h"/>
+					<F N="../rtcs/source/include/dhcp.h"/>
+					<F N="../rtcs/source/include/dhcp_prv.h"/>
+					<F N="../rtcs/source/include/dhcpsrv.h"/>
+					<F N="../rtcs/source/include/dhcpuprv.h"/>
+					<F N="../rtcs/source/include/dns.h"/>
+					<F N="../rtcs/source/include/fcs16.h"/>
+					<F N="../rtcs/source/include/ftp.h"/>
+					<F N="../rtcs/source/include/ftpc.h"/>
+					<F N="../rtcs/source/include/ftpd.h"/>
+					<F N="../rtcs/source/include/ftpd_msg.h"/>
+					<F N="../rtcs/source/include/icmp.h"/>
+					<F N="../rtcs/source/include/icmp6.h"/>
+					<F N="../rtcs/source/include/icmp6_prv.h"/>
+					<F N="../rtcs/source/include/icmp_prv.h"/>
+					<F N="../rtcs/source/include/igmp.h"/>
+					<F N="../rtcs/source/include/ip-e.h"/>
+					<F N="../rtcs/source/include/ip.h"/>
+					<F N="../rtcs/source/include/ip6.h"/>
+					<F N="../rtcs/source/include/ip6_if.h"/>
+					<F N="../rtcs/source/include/ip6_prv.h"/>
+					<F N="../rtcs/source/include/ip6_trace.h"/>
+					<F N="../rtcs/source/include/ip_prv.h"/>
+					<F N="../rtcs/source/include/ipc_udp.h"/>
+					<F N="../rtcs/source/include/ipc_udp_prv.h"/>
+					<F N="../rtcs/source/include/ipcfg.h"/>
+					<F N="../rtcs/source/include/ipcfg_prv.h"/>
+					<F N="../rtcs/source/include/ipcp.h"/>
+					<F N="../rtcs/source/include/ipradix.h"/>
+					<F N="../rtcs/source/include/iptunnel.h"/>
+					<F N="../rtcs/source/include/iwcfg.h"/>
+					<F N="../rtcs/source/include/lcp.h"/>
+					<F N="../rtcs/source/include/md5.h"/>
+					<F N="../rtcs/source/include/nat.h"/>
+					<F N="../rtcs/source/include/nat_prv.h"/>
+					<F N="../rtcs/source/include/nat_session.h"/>
+					<F N="../rtcs/source/include/natvers.h"/>
+					<F N="../rtcs/source/include/nd6.h"/>
+					<F N="../rtcs/source/include/pap.h"/>
+					<F N="../rtcs/source/include/ppp.h"/>
+					<F N="../rtcs/source/include/ppp_prv.h"/>
+					<F N="../rtcs/source/include/pppfsm.h"/>
+					<F N="../rtcs/source/include/ppphdlc.h"/>
+					<F N="../rtcs/source/include/rip.h"/>
+					<F N="../rtcs/source/include/rip_prv.h"/>
+					<F N="../rtcs/source/include/route.h"/>
+					<F N="../rtcs/source/include/rtcs.h"/>
+					<F N="../rtcs/source/include/rtcs25x.h"/>
+					<F N="../rtcs/source/include/rtcs_in.h"/>
+					<F N="../rtcs/source/include/rtcs_prv.h"/>
+					<F N="../rtcs/source/include/rtcscfg.h"/>
+					<F N="../rtcs/source/include/rtcshdlc.h"/>
+					<F N="../rtcs/source/include/rtcslog.h"/>
+					<F N="../rtcs/source/include/rtcspcb.h"/>
+					<F N="../rtcs/source/include/rtcsrtos.h"/>
+					<F N="../rtcs/source/include/rtcstime.h"/>
+					<F N="../rtcs/source/include/rtcsvers.h"/>
+					<F N="../rtcs/source/include/select.h"/>
+					<F N="../rtcs/source/include/snmp.h"/>
+					<F N="../rtcs/source/include/snmpcfg.h"/>
+					<F N="../rtcs/source/include/socket.h"/>
+					<F N="../rtcs/source/include/tcp.h"/>
+					<F N="../rtcs/source/include/tcp_prv.h"/>
+					<F N="../rtcs/source/include/tcpip.h"/>
+					<F N="../rtcs/source/include/telnet.h"/>
+					<F N="../rtcs/source/include/tftp.h"/>
+					<F N="../rtcs/source/include/ticker.h"/>
+					<F N="../rtcs/source/include/udp.h"/>
+					<F N="../rtcs/source/include/udp_prv.h"/>
+				</Folder>
+				<Folder Name="media">
+					<F N="../rtcs/source/media/arp.c"/>
+					<F N="../rtcs/source/media/arpinit.c"/>
+					<F N="../rtcs/source/media/ip-e.c"/>
+					<F N="../rtcs/source/media/ip6-e.c"/>
+					<F N="../rtcs/source/media/ipcp.c"/>
+					<F N="../rtcs/source/media/ipcpfsm.c"/>
+					<F N="../rtcs/source/media/proxyarp.c"/>
+				</Folder>
+				<Folder Name="nat">
+					<F N="../rtcs/source/nat/alggen.c"/>
+					<F N="../rtcs/source/nat/dnat.c"/>
+					<F N="../rtcs/source/nat/ifdnat.c"/>
+					<F N="../rtcs/source/nat/ifnat.c"/>
+					<F N="../rtcs/source/nat/nat.c"/>
+					<F N="../rtcs/source/nat/nat_apply.c"/>
+					<F N="../rtcs/source/nat/natalg.c"/>
+					<F N="../rtcs/source/nat/natdata.c"/>
+					<F N="../rtcs/source/nat/natevent.c"/>
+					<F N="../rtcs/source/nat/natftp.c"/>
+					<F N="../rtcs/source/nat/nattftp.c"/>
+					<F N="../rtcs/source/nat/sonat.c"/>
+				</Folder>
+				<Folder Name="os">
+					<Folder Name="mqx25x">
+						<F N="../rtcs/source/os/mqx25x/rtcsdate.c"/>
+						<F N="../rtcs/source/os/mqx25x/rtcsmsec.c"/>
+						<F N="../rtcs/source/os/mqx25x/rtcsmsg.c"/>
+						<F N="../rtcs/source/os/mqx25x/rtcspart.c"/>
+						<F N="../rtcs/source/os/mqx25x/rtcssec.c"/>
+						<F N="../rtcs/source/os/mqx25x/rtcstask.c"/>
+					</Folder>
+				</Folder>
+				<Folder Name="ppp">
+					<F N="../rtcs/source/ppp/ccp.c"/>
+					<F N="../rtcs/source/ppp/chap.c"/>
+					<F N="../rtcs/source/ppp/gen16.c"/>
+					<F N="../rtcs/source/ppp/genmd5.c"/>
+					<F N="../rtcs/source/ppp/hdlcio.c"/>
+					<F N="../rtcs/source/ppp/hdlcio2.c"/>
+					<F N="../rtcs/source/ppp/lcp.c"/>
+					<F N="../rtcs/source/ppp/lcpif.c"/>
+					<F N="../rtcs/source/ppp/md5.c"/>
+					<F N="../rtcs/source/ppp/md5step.c"/>
+					<F N="../rtcs/source/ppp/pap.c"/>
+					<F N="../rtcs/source/ppp/pktrx.c"/>
+					<F N="../rtcs/source/ppp/pkttx.c"/>
+					<F N="../rtcs/source/ppp/ppp.c"/>
+					<F N="../rtcs/source/ppp/pppfsm.c"/>
+					<F N="../rtcs/source/ppp/pppglob.c"/>
+					<F N="../rtcs/source/ppp/ppphdlc.c"/>
+				</Folder>
+				<Folder Name="snmp">
+					<F N="../rtcs/source/snmp/1213.c"/>
+					<F N="../rtcs/source/snmp/mib.c"/>
+					<F N="../rtcs/source/snmp/mqxmib.c"/>
+					<F N="../rtcs/source/snmp/snmp.c"/>
+					<F N="../rtcs/source/snmp/trap_receivers.c"/>
+					<F N="../rtcs/source/snmp/traps.c"/>
+				</Folder>
+				<Folder Name="tcpip">
+					<F N="../rtcs/source/tcpip/bootcomm.c"/>
+					<F N="../rtcs/source/tcpip/bootinit.c"/>
+					<F N="../rtcs/source/tcpip/bootp.c"/>
+					<F N="../rtcs/source/tcpip/checksum.c"/>
+					<F N="../rtcs/source/tcpip/checksum6.c"/>
+					<F N="../rtcs/source/tcpip/dhcpclnt.c"/>
+					<F N="../rtcs/source/tcpip/dhcputil.c"/>
+					<F N="../rtcs/source/tcpip/icmp.c"/>
+					<F N="../rtcs/source/tcpip/igmp.c"/>
+					<F N="../rtcs/source/tcpip/igmputil.c"/>
+					<F N="../rtcs/source/tcpip/ip.c"/>
+					<F N="../rtcs/source/tcpip/ip_reasm.c"/>
+					<F N="../rtcs/source/tcpip/ipif_add.c"/>
+					<F N="../rtcs/source/tcpip/ipif_rem.c"/>
+					<F N="../rtcs/source/tcpip/iplocal.c"/>
+					<F N="../rtcs/source/tcpip/ipradix.c"/>
+					<F N="../rtcs/source/tcpip/iproute.c"/>
+					<F N="../rtcs/source/tcpip/iptunnel.c"/>
+					<F N="../rtcs/source/tcpip/iputil.c"/>
+					<F N="../rtcs/source/tcpip/rip.c"/>
+					<F N="../rtcs/source/tcpip/route.c"/>
+					<F N="../rtcs/source/tcpip/rtcspcb.c"/>
+					<F N="../rtcs/source/tcpip/tcp.c"/>
+					<F N="../rtcs/source/tcpip/tcp_buf.c"/>
+					<F N="../rtcs/source/tcpip/tcp_clos.c"/>
+					<F N="../rtcs/source/tcpip/tcp_rcv.c"/>
+					<F N="../rtcs/source/tcpip/tcp_send.c"/>
+					<F N="../rtcs/source/tcpip/tcpip.c"/>
+					<F N="../rtcs/source/tcpip/ticker.c"/>
+					<F N="../rtcs/source/tcpip/timer.c"/>
+					<F N="../rtcs/source/tcpip/udp.c"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../shell">
+			<Folder Name="source">
+				<Folder Name="include">
+					<F N="../shell/source/include/sh_enet.h"/>
+					<F N="../shell/source/include/sh_mfs.h"/>
+					<F N="../shell/source/include/sh_prv.h"/>
+					<F N="../shell/source/include/sh_rtcs.h"/>
+					<F N="../shell/source/include/shell.h"/>
+				</Folder>
+				<Folder Name="mfs">
+					<F N="../shell/source/mfs/sh_cache.c"/>
+					<F N="../shell/source/mfs/sh_cd.c"/>
+					<F N="../shell/source/mfs/sh_compare.c"/>
+					<F N="../shell/source/mfs/sh_copy.c"/>
+					<F N="../shell/source/mfs/sh_create.c"/>
+					<F N="../shell/source/mfs/sh_del.c"/>
+					<F N="../shell/source/mfs/sh_df.c"/>
+					<F N="../shell/source/mfs/sh_di.c"/>
+					<F N="../shell/source/mfs/sh_dir.c"/>
+					<F N="../shell/source/mfs/sh_dirent.c"/>
+					<F N="../shell/source/mfs/sh_disect.c"/>
+					<F N="../shell/source/mfs/sh_flush.c"/>
+					<F N="../shell/source/mfs/sh_format.c"/>
+					<F N="../shell/source/mfs/sh_mkdir.c"/>
+					<F N="../shell/source/mfs/sh_pwd.c"/>
+					<F N="../shell/source/mfs/sh_read.c"/>
+					<F N="../shell/source/mfs/sh_readtest.c"/>
+					<F N="../shell/source/mfs/sh_rename.c"/>
+					<F N="../shell/source/mfs/sh_rmdir.c"/>
+					<F N="../shell/source/mfs/sh_type.c"/>
+					<F N="../shell/source/mfs/sh_write.c"/>
+					<F N="../shell/source/mfs/sh_writetest.c"/>
+				</Folder>
+				<Folder Name="mqx">
+					<F N="../shell/source/mqx/sh_abort.c"/>
+					<F N="../shell/source/mqx/sh_kill.c"/>
+					<F N="../shell/source/mqx/sh_pause.c"/>
+					<F N="../shell/source/mqx/sh_tad.c"/>
+				</Folder>
+				<Folder Name="rtcs">
+					<F N="../shell/source/rtcs/sh_arpdisp.c"/>
+					<F N="../shell/source/rtcs/sh_clock.c"/>
+					<F N="../shell/source/rtcs/sh_echod.c"/>
+					<F N="../shell/source/rtcs/sh_eds.c"/>
+					<F N="../shell/source/rtcs/sh_enet.c"/>
+					<F N="../shell/source/rtcs/sh_exec.c"/>
+					<F N="../shell/source/rtcs/sh_ftpc.c"/>
+					<F N="../shell/source/rtcs/sh_ftpd.c"/>
+					<F N="../shell/source/rtcs/sh_gate.c"/>
+					<F N="../shell/source/rtcs/sh_getroute.c"/>
+					<F N="../shell/source/rtcs/sh_ghbn.c"/>
+					<F N="../shell/source/rtcs/sh_ipconfig.c"/>
+					<F N="../shell/source/rtcs/sh_iwconfig.c"/>
+					<F N="../shell/source/rtcs/sh_load.c"/>
+					<F N="../shell/source/rtcs/sh_nat.c"/>
+					<F N="../shell/source/rtcs/sh_nstat.c"/>
+					<F N="../shell/source/rtcs/sh_ping.c"/>
+					<F N="../shell/source/rtcs/sh_ppp.c"/>
+					<F N="../shell/source/rtcs/sh_rtcs.c"/>
+					<F N="../shell/source/rtcs/sh_sendto.c"/>
+					<F N="../shell/source/rtcs/sh_snmpd.c"/>
+					<F N="../shell/source/rtcs/sh_tftp.c"/>
+					<F N="../shell/source/rtcs/sh_tftpd.c"/>
+					<F N="../shell/source/rtcs/sh_tnet.c"/>
+					<F N="../shell/source/rtcs/sh_tnetd.c"/>
+				</Folder>
+				<Folder Name="shell">
+					<F N="../shell/source/shell/sh_cmdlist.c"/>
+					<F N="../shell/source/shell/sh_exit.c"/>
+					<F N="../shell/source/shell/sh_help.c"/>
+					<F N="../shell/source/shell/sh_sh.c"/>
+					<F N="../shell/source/shell/sh_util.c"/>
+					<F N="../shell/source/shell/shell.c"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../usb">
+			<Folder Name="common">
+				<Folder Name="include">
+					<F N="../usb/common/include/usb.h"/>
+					<F N="../usb/common/include/usb_debug.h"/>
+					<F N="../usb/common/include/usb_desc.h"/>
+					<F N="../usb/common/include/usb_error.h"/>
+					<F N="../usb/common/include/usb_misc.h"/>
+					<F N="../usb/common/include/usb_misc_prv.h"/>
+					<F N="../usb/common/include/usb_prv.h"/>
+					<F N="../usb/common/include/usb_types.h"/>
+				</Folder>
+			</Folder>
+			<Folder Name="device">
+				<Folder Name="source">
+					<Folder Name="classes">
+						<Folder Name="audio">
+							<F N="../usb/device/source/classes/audio/usb_audio.c"/>
+						</Folder>
+						<Folder Name="cdc">
+							<F N="../usb/device/source/classes/cdc/usb_cdc.c"/>
+							<F N="../usb/device/source/classes/cdc/usb_cdc_pstn.c"/>
+						</Folder>
+						<Folder Name="common">
+							<F N="../usb/device/source/classes/common/usb_class.c"/>
+							<F N="../usb/device/source/classes/common/usb_framework.c"/>
+						</Folder>
+						<Folder Name="hid">
+							<F N="../usb/device/source/classes/hid/usb_hid.c"/>
+						</Folder>
+						<Folder Name="include">
+							<F N="../usb/device/source/classes/include/usb_audio.h"/>
+							<F N="../usb/device/source/classes/include/usb_cdc.h"/>
+							<F N="../usb/device/source/classes/include/usb_cdc_pstn.h"/>
+							<F N="../usb/device/source/classes/include/usb_class.h"/>
+							<F N="../usb/device/source/classes/include/usb_framework.h"/>
+							<F N="../usb/device/source/classes/include/usb_hid.h"/>
+							<F N="../usb/device/source/classes/include/usb_msc.h"/>
+							<F N="../usb/device/source/classes/include/usb_msc_scsi.h"/>
+							<F N="../usb/device/source/classes/include/usb_phdc.h"/>
+							<F N="../usb/device/source/classes/include/usb_stack_config.h"/>
+						</Folder>
+						<Folder Name="msd">
+							<F N="../usb/device/source/classes/msd/usb_msc.c"/>
+							<F N="../usb/device/source/classes/msd/usb_msc_scsi.c"/>
+						</Folder>
+						<Folder Name="phdc">
+							<F N="../usb/device/source/classes/phdc/usb_phdc.c"/>
+						</Folder>
+					</Folder>
+					<Folder Name="device">
+						<Folder Name="ehci">
+							<F N="../usb/device/source/device/ehci/callback_ehci.c"/>
+							<F N="../usb/device/source/device/ehci/ehci_dev_main.c"/>
+						</Folder>
+						<Folder Name="khci">
+							<F N="../usb/device/source/device/khci/callback_khci.c"/>
+							<F N="../usb/device/source/device/khci/khci_dev_main.c"/>
+						</Folder>
+						<F N="../usb/device/source/device/dev_cncl.c"/>
+						<F N="../usb/device/source/device/dev_ep_deinit.c"/>
+						<F N="../usb/device/source/device/dev_main.c"/>
+						<F N="../usb/device/source/device/dev_recv.c"/>
+						<F N="../usb/device/source/device/dev_send.c"/>
+						<F N="../usb/device/source/device/dev_shut.c"/>
+						<F N="../usb/device/source/device/dev_utl.c"/>
+					</Folder>
+					<Folder Name="include">
+						<Folder Name="ehci">
+							<F N="../usb/device/source/include/ehci/ehci_dev_main.h"/>
+							<F N="../usb/device/source/include/ehci/ehci_usbprv.h"/>
+						</Folder>
+						<Folder Name="khci">
+							<F N="../usb/device/source/include/khci/khci_dev_main.h"/>
+							<F N="../usb/device/source/include/khci/khci_usbprv.h"/>
+						</Folder>
+						<Folder Name="rtos">
+							<F N="../usb/device/source/include/rtos/mqx_dev.h"/>
+						</Folder>
+						<F N="../usb/device/source/include/dev_cnfg.h"/>
+						<F N="../usb/device/source/include/dev_main.h"/>
+						<F N="../usb/device/source/include/devapi.h"/>
+					</Folder>
+				</Folder>
+			</Folder>
+			<Folder Name="host">
+				<Folder Name="source">
+					<Folder Name="classes">
+						<Folder Name="audio">
+							<F N="../usb/host/source/classes/audio/usb_host_audio.c"/>
+							<F N="../usb/host/source/classes/audio/usb_host_audio.h"/>
+							<F N="../usb/host/source/classes/audio/usb_host_audio_intf.c"/>
+						</Folder>
+						<Folder Name="cdc">
+							<F N="../usb/host/source/classes/cdc/usb_host_cdc.c"/>
+							<F N="../usb/host/source/classes/cdc/usb_host_cdc.h"/>
+							<F N="../usb/host/source/classes/cdc/usb_host_cdc_intf.c"/>
+						</Folder>
+						<Folder Name="hid">
+							<F N="../usb/host/source/classes/hid/usb_host_hid.c"/>
+							<F N="../usb/host/source/classes/hid/usb_host_hid.h"/>
+						</Folder>
+						<Folder Name="hub">
+							<F N="../usb/host/source/classes/hub/usb_host_hub.c"/>
+							<F N="../usb/host/source/classes/hub/usb_host_hub.h"/>
+							<F N="../usb/host/source/classes/hub/usb_host_hub_prv.h"/>
+							<F N="../usb/host/source/classes/hub/usb_host_hub_sm.c"/>
+							<F N="../usb/host/source/classes/hub/usb_host_hub_sm.h"/>
+						</Folder>
+						<Folder Name="msd">
+							<Folder Name="mfs">
+								<F N="../usb/host/source/classes/msd/mfs/usbmfs.c"/>
+								<F N="../usb/host/source/classes/msd/mfs/usbmfs.h"/>
+								<F N="../usb/host/source/classes/msd/mfs/usbmfspr.h"/>
+							</Folder>
+							<F N="../usb/host/source/classes/msd/usb_host_msd_bo.c"/>
+							<F N="../usb/host/source/classes/msd/usb_host_msd_bo.h"/>
+							<F N="../usb/host/source/classes/msd/usb_host_msd_queue.c"/>
+							<F N="../usb/host/source/classes/msd/usb_host_msd_ufi.c"/>
+							<F N="../usb/host/source/classes/msd/usb_host_msd_ufi.h"/>
+						</Folder>
+						<Folder Name="phdc">
+							<F N="../usb/host/source/classes/phdc/usb_host_phdc.c"/>
+							<F N="../usb/host/source/classes/phdc/usb_host_phdc.h"/>
+						</Folder>
+						<Folder Name="printer">
+							<F N="../usb/host/source/classes/printer/usb_host_printer.c"/>
+							<F N="../usb/host/source/classes/printer/usb_host_printer.h"/>
+						</Folder>
+					</Folder>
+					<Folder Name="host">
+						<Folder Name="ehci">
+							<F N="../usb/host/source/host/ehci/ehci.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_bw.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_bw.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_cache.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_cncl.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_cncl.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_intr.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_intr.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_iso.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_iso.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_main.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_main.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_prv.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_shut.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_shut.h"/>
+							<F N="../usb/host/source/host/ehci/ehci_utl.c"/>
+							<F N="../usb/host/source/host/ehci/ehci_utl.h"/>
+						</Folder>
+						<Folder Name="khci">
+							<F N="../usb/host/source/host/khci/khci.c"/>
+							<F N="../usb/host/source/host/khci/khci.h"/>
+							<F N="../usb/host/source/host/khci/khci_prv.h"/>
+						</Folder>
+						<F N="../usb/host/source/host/host_ch9.c"/>
+						<F N="../usb/host/source/host/host_close.c"/>
+						<F N="../usb/host/source/host/host_cnl.c"/>
+						<F N="../usb/host/source/host/host_common.c"/>
+						<F N="../usb/host/source/host/host_dev_list.c"/>
+						<F N="../usb/host/source/host/host_main.c"/>
+						<F N="../usb/host/source/host/host_rcv.c"/>
+						<F N="../usb/host/source/host/host_shut.c"/>
+						<F N="../usb/host/source/host/host_snd.c"/>
+					</Folder>
+					<Folder Name="include">
+						<F N="../usb/host/source/include/host_ch9.h"/>
+						<F N="../usb/host/source/include/host_close.h"/>
+						<F N="../usb/host/source/include/host_cnfg.h"/>
+						<F N="../usb/host/source/include/host_cnl.h"/>
+						<F N="../usb/host/source/include/host_common.h"/>
+						<F N="../usb/host/source/include/host_dev_list.h"/>
+						<F N="../usb/host/source/include/host_main.h"/>
+						<F N="../usb/host/source/include/host_rcv.h"/>
+						<F N="../usb/host/source/include/host_shut.h"/>
+						<F N="../usb/host/source/include/host_snd.h"/>
+						<F N="../usb/host/source/include/hostapi.h"/>
+					</Folder>
+					<Folder Name="rtos">
+						<Folder Name="mqx">
+							<F N="../usb/host/source/rtos/mqx/mqx_dll.c"/>
+							<F N="../usb/host/source/rtos/mqx/mqx_dll.h"/>
+							<F N="../usb/host/source/rtos/mqx/mqx_host.h"/>
+							<F N="../usb/host/source/rtos/mqx/usb_mqx.c"/>
+							<F N="../usb/host/source/rtos/mqx/usb_mqx.h"/>
+						</Folder>
+					</Folder>
+				</Folder>
+			</Folder>
+		</Folder>
+	</Files>
+</Project>

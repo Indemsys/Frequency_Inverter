@@ -1,0 +1,2 @@
+ImgTypeID	Name	Chip	Offset	MaxSize	CompressAccept	MD5_CRC32
+8	Inverter v2	MK60	32768	1015808	False	True

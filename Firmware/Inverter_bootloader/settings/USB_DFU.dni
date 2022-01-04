@@ -1,0 +1,163 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[DebugChecksum]
+Checksum=-834416426
+[Exceptions]
+StopOnUncaught=_ 0
+StopOnThrow=_ 0
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[JLinkDriver]
+CStepIntDis=_ 0
+TraceBufferSize=0x00010000
+TraceStallIfFIFOFull=0x00000000
+TracePortSize=0x00000004
+[struct_types]
+Fmt0=T_Boot_record-magic_val	4	0
+Fmt1=T_EP_CBL-addr	4	0
+Fmt2=T_EP_CBL-reserved1	4	0
+Fmt3=T_EP_CBL_BITS-all	4	0
+Fmt4=T_EP_CBL_CBITS-	4	0
+Fmt5=T_EP_CBL_CBITS-bdtstall	4	0
+Fmt6=T_EP_CBL_CBITS-data	4	0
+Fmt7=T_EP_CBL_CBITS-dts	4	0
+Fmt8=T_EP_CBL_CBITS-keep	4	0
+Fmt9=T_EP_CBL_CBITS-ninc	4	0
+Fmt10=T_EP_CBL_CBITS-own	4	0
+Fmt11=T_EP_CBL_PID-	4	0
+Fmt12=T_EP_CBL_PID-pid	4	0
+Fmt13=T_EP_STATE-addr	4	0
+Fmt14=T_EP_STATE-app_buffer	4	0
+Fmt15=T_EP_STATE-app_len	4	0
+Fmt16=T_EP_STATE-curr_offset	4	0
+Fmt17=T_EP_STATE-direction	4	0
+Fmt18=T_EP_STATE-ep_cbl_indx	4	0
+Fmt19=T_EP_STATE-flag	4	0
+Fmt20=T_EP_STATE-type	4	0
+Fmt21=USB_DEV_EVENT_STRUCT-buffer_ptr	4	0
+Fmt22=USB_DEV_EVENT_STRUCT-controller_ID	4	0
+Fmt23=USB_DEV_EVENT_STRUCT-direction	4	0
+Fmt24=USB_DEV_EVENT_STRUCT-ep_num	4	0
+Fmt25=USB_DEV_EVENT_STRUCT-errors	4	0
+Fmt26=USB_DEV_EVENT_STRUCT-setup	4	0
+Fmt27=USB_SETUP_STRUCT-request	4	0
+Fmt28=USB_SETUP_STRUCT-request_type	4	0
+Fmt29=USB_SETUP_STRUCT-value	4	0
+[array_types]
+Fmt0=INT16U[7]	4	0
+Fmt1=INT8U_ptr[9]	4	0
+[watch_formats]
+Fmt0={W}0:buff_ptr	4	0
+Fmt1={W}0:ccrc	4	0
+Fmt2={W}0:g_bdt_address	4	0
+Fmt3={W}0:res	4	0
+Fmt4={W}0:rx_block_crc	4	0
+[PowerLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=0
+Title0=I0
+Symbol0=0 4 195
+LiveEnabled=0
+LiveFile=PowerLogLive.log
+[DataLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[EventLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+Title0=Ch0
+Symbol0=0 4 1
+Title1=Ch1
+Symbol1=0 4 1
+Title2=Ch2
+Symbol2=0 4 1
+Title3=Ch3
+Symbol3=0 4 1
+SumSortOrder=0
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Trace1]
+Enabled=0
+ShowSource=1
+[Trace2]
+Enabled=0
+ShowSource=0
+[SWOTraceWindow]
+PcSampling=0
+InterruptLogs=0
+ForcedTimeStamps=0
+EventCPI=0
+EventEXC=0
+EventFOLD=0
+EventLSU=0
+EventSLEEP=0
+[SWOTraceHWSettings]
+OverrideDefaultClocks=0
+CpuClock=72000000
+ClockAutoDetect=0
+ClockWanted=2000000
+JtagSpeed=2000000
+Prescaler=36
+TimeStampPrescIndex=0
+TimeStampPrescData=0
+PcSampCYCTAP=1
+PcSampPOSTCNT=15
+PcSampIndex=0
+DataLogMode=0
+ITMportsEnable=0
+ITMportsTermIO=0
+ITMportsLogFile=0
+ITMlogFile=$PROJ_DIR$\ITM.log
+[PowerProbe]
+Frequency=10000
+Probe0=I0
+ProbeSetup0=2 1 1 2 0 0
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=1
+Graph=0
+Symbiont=0
+Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Count=0
+[Aliases]
+A0=_ "C:\Embedded\Projects\Barduva\Inverter\Firmware\CANUSB_bootloader\BSP\PE\Cpu.c" ""
+A1=_ "C:\Embedded\Projects\Barduva\Inverter\Firmware\CANUSB_bootloader\BSP\low_level_init.c" ""
+A2=_ "C:\Embedded\Projects\Barduva\Inverter\Firmware\CANUSB_bootloader\BSP\startup.s" ""
+A3=_ "C:\Embedded\Projects\Barduva\Inverter\Firmware_USB_bootloader\BSP\startup.s" "C:\Embedded\Projects\Barduva\Inverter\Firmware\Firmware_USB_bootloader\BSP\startup.s"
+Count=4
+SuppressDialog=0

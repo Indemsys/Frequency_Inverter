@@ -1,0 +1,68 @@
+﻿[Main]
+Version=2
+
+[cxImagesDBTableView1Enable: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=112
+
+[cxImagesDBTableView1ExpandSizeTo: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=162
+
+[cxImagesDBTableView1ImageType: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=153
+
+[cxImagesDBTableView1InputFile: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=330
+
+[cxImagesDBTableView1OutputFile: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=297
+
+[cxResultsDBTableView1CompressionRatio: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=67
+
+[cxResultsDBTableView1ComprImageSize: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=96
+
+[cxResultsDBTableView1CRC32: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=63
+
+[cxResultsDBTableView1DateStump: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=72
+
+[cxResultsDBTableView1ImageSize: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=84
+
+[cxResultsDBTableView1MD5: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=188
+
+[cxResultsDBTableView1Offset: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=138
+
+[cxResultsDBTableView1TimeStump: TcxPropertiesStoreComponent]
+=
+SourceDPI=96
+Width=65
+

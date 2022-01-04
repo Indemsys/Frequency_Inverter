@@ -1,0 +1,2 @@
+InputFile	OutputFile	ExpandSizeTo	Enable	ImageType
+Firmware_image.hex	Firmware_image.bin	0	True	8
